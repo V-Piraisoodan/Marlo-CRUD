@@ -22,20 +22,20 @@ exports.signup = async (req,res,next)=>{
         const usermail = await userModel.findOne({email})
         if(usermail){
             res.status(400).send({msg:"Email Already Exist"})
-            console.log("Email Already Exist")
+            // console.log("Email Already Exist")
             return
         }
         const userphone = await userModel.findOne({phone})
         if(userphone){
             res.status(400).send({msg:"Mobile Number Already Exist"})
-            console.log("Mobile Number Already Exist")
+            // console.log("Mobile Number Already Exist")
             return
         }
         if(!/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@!#%&]).{8}$/g.test(userData.password)){
             res.status(400).send({msg:"Password pattern did not match..,Password should be in minimum 8 charector,a combination of uppercase and lowercase letters and symbols.."})
         }
         userData.password = await bcrypt.hash(userData.password,10)
-        console.log(userData.password)
+        // console.log(userData.password)
         var response = await userData.save();
         res.send(response);
     }catch(err){
@@ -76,10 +76,10 @@ exports.updateUser = async(req,res,next)=>{
             {_id : req.params.userId},
             {...req.body.user},
             {runValidators : true})
-            console.log(response,"Updated successfully")
+            // console.log(response,"Updated successfully")
             res.send(response)
     }catch(err){
-        console.log(err,"Not updated")
+        // console.log(err,"Not updated")
         res.send(err)
     }
 }
@@ -87,7 +87,7 @@ exports.updateUser = async(req,res,next)=>{
 exports.deleteUser = async (req,res,next)=>{
     try{
         var response = await userModel.findByIdAndRemove(req.params.userId)
-        console.log("Deleted Successfully")
+        // console.log("Deleted Successfully")
         res.send(response) 
     }catch(err){
         console.log(err,"Not deleted")
