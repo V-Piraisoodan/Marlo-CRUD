@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 
+// mongoose user schema
 const userSchema = new Schema(
     {
         firstName : {

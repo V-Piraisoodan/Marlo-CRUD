@@ -6,11 +6,12 @@ const userRouter = require('./Router/user')
 
 dotenv.config();
 const app = express();
+// middleware
 app.use(express.json());
 
-// console.log(process.env)
+
 const PORT = process.env.PORT
-// mongo.connect();
+// mongoose connect
 mongo.connectMongoose();
 
 app.use("/",(req,res,next)=>{
