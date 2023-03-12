@@ -4,9 +4,10 @@ const mongo = require("./shared");
 const dotenv = require("dotenv")
 const userRouter = require('./Router/user')
 
+dotenv.config();
 const app = express();
 app.use(express.json());
-dotenv.config();
+
 // console.log(process.env)
 const PORT = process.env.PORT
 // mongo.connect();

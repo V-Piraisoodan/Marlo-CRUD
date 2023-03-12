@@ -3,7 +3,8 @@ const router = express.Router();
 
 const userModule = require("../Module/user")
 
-router.post("/create",userModule.createUser);
+router.post("/signup",userModule.signup);
+router.post("/signin",userModule.signin)
 router.get("/get",userModule.getUser);
 router.put("/update/:userId",userModule.updateUser);
 router.delete("/delete/:userId",userModule.deleteUser);

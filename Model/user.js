@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
 const validator = require("validator");
 
 const userSchema = new Schema(
@@ -45,7 +46,7 @@ const userSchema = new Schema(
         },
         password : {
             type : String,
-            required : false
+            required : false,
         }
     }
 )
